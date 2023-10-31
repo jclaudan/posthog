@@ -1447,6 +1447,8 @@ export interface PluginType {
     public_jobs?: Record<string, JobSpec>
 }
 
+export type AppType = PluginType
+
 /** Config passed to app component and logic as props. Sent in Django's app context */
 export interface FrontendAppConfig {
     pluginId: number
@@ -1491,6 +1493,20 @@ export interface PluginConfigType {
     error?: PluginErrorType
     delivery_rate_24h?: number | null
     created_at?: string
+}
+
+// TODO: Rename to PluginConfigType once the are removed from the frontend
+export interface PluginConfigTypeNew {
+    id: number
+    plugin: number
+    team_id: number
+    enabled: boolean
+    order: number
+    error?: PluginErrorType
+    // TODO: Add to Django model
+    name: string
+    description?: string
+    updated_at: string
 }
 
 export interface PluginConfigWithPluginInfo extends PluginConfigType {
